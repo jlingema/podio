@@ -114,3 +114,7 @@ class EventStore(object):
         for nev, store in self.stores:
             nevts_all_files += nev
         return nevts_all_files
+
+    def close(self):
+        for store in self.stores:
+            store[1].close()
