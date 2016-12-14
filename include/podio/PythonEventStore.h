@@ -12,6 +12,9 @@ public:
   /// constructor from filename
   PythonEventStore(const char* filename);
 
+  /// destructor - closes file if still open
+  ~PythonEventStore();
+
   /// access a collection.
   podio::CollectionBase* get(const char* name);
 

@@ -7,6 +7,12 @@ podio::PythonEventStore::PythonEventStore(const char* name) :
   m_store.setReader(&m_reader);
 }
 
+podio::PythonEventStore::~PythonEventStore() {
+  if (m_reader.isValid()) {
+    m_reader.closeFile();
+  }
+}
+
 podio::CollectionBase* podio::PythonEventStore::get(const char* name) {
   const podio::CollectionBase* coll(nullptr);
   auto success = m_store.get(name, coll);
